@@ -50,16 +50,22 @@
                 if ($this.hasClass('less')) {
                     $this.removeClass('less');
                     $this.html(config.moreText);
-                    $this.parent().prev().animate({'height':'0'+'%'}, function () { $this.parent().prev().prev().show(); }).hide('fast', function() {
-                        config.onLess();
-                      });
+                    $this.parent().prev().hide();
+                    $this.parent().prev().prev().show(0, function () { config.onLess(); });
+
+                    //$this.parent().prev().animate({ 'height': '0' + '%' }, function () { $this.parent().prev().prev().show(); }).hide('fast', function () {
+                    //    config.onLess();
+                    //});
 
                 } else {
                     $this.addClass('less');
                     $this.html(config.lessText);
-                    $this.parent().prev().animate({'height':'100'+'%'}, function () { $this.parent().prev().prev().hide(); }).show('fast', function() {
-                        config.onMore();
-                      });
+                    $this.parent().prev().show();
+                    $this.parent().prev().prev().hide(0, function () { config.onMore(); });
+
+                    //$this.parent().prev().animate({ 'height': '100' + '%' }, function () { $this.parent().prev().prev().hide(); }).show('fast', function () {
+                    //    config.onMore();
+                    //});
                 }
                 return false;
             }
